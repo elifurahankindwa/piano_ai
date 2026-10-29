@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pretty_midi
+librosa
+soundfile
+numpy
+# Video export: Pillow draws the frames, imageio-ffmpeg provides an ffmpeg binary
+# (a system ffmpeg on PATH is used instead when one is installed).
+Pillow
+imageio-ffmpeg
+# Audio transcription (real model, Spotify Basic Pitch). Install separately if it conflicts with your Python version:
+# Basic Pitch: pip install --no-deps basic-pitch && pip install onnxruntime resampy mir_eval scipy
+httpx
+pytest

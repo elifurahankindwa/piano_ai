@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Piano AI</title>
+<link rel="stylesheet" href="src/styles.css">
+<header><b>Piano AI</b>
+<label class="b">Upload audio / MIDI<input id="file" type="file" accept=".wav,.mp3,.flac,.mid,.midi" hidden></label>
+<span id="status" class="mut">No project loaded</span>
+<span style="margin-left:auto" class="mut"><span style="color:var(--L)">■</span> left (est.) <span style="color:var(--R)">■</span> right (est.) <span style="color:var(--U)">■</span> unknown</span></header>
+<main><div id="wrap"><canvas id="roll"></canvas><canvas id="kb"></canvas></div>
+<aside><div class="mut">Detected chord (estimate)</div><div id="chord">–</div><div id="cconf" class="mut"></div>
+<h4>Key (estimate)</h4><div id="key">–</div><div id="kconf" class="mut"></div><div id="kwarn" class="mut" style="font-size:12px"></div>
+<h4>Sounding now</h4><div id="now" class="mut">–</div>
+<h4>Selected note</h4><div id="sel" class="mut">Click a note in the roll</div>
+<div id="selbtns"></div>
+<h4>Export</h4><div id="exp" class="mut">–</div>
+<div id="vbox" hidden>
+<select id="vres" aria-label="Video resolution"></select>
+<select id="vcodec" aria-label="Video codec"></select>
+<select id="vqual" aria-label="Video quality"></select>
+<div class="vrow mut"><input id="vfrom" type="number" min="0" step="1" placeholder="0" aria-label="Range start in seconds">–<input id="vto" type="number" min="0" step="1" placeholder="end" aria-label="Range end in seconds">s</div>
+<button id="vgo">Render video</button><a id="vdl" hidden>Download</a>
+<div id="vstat" class="mut" style="font-size:12px"></div>
+</div>
+<p class="mut" style="font-size:12px">Hands are pitch-range heuristics. Faded notes have low model confidence. Fingerings are not yet implemented.</p></aside></main>
+<footer><button id="play" aria-label="Play or pause">▶</button><button id="back">−5s</button><button id="fwd">+5s</button>
+<input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="time" class="mut">0:00 / 0:00</span>
+<select id="speed" aria-label="Speed"><option>0.5</option><option>0.75</option><option selected>1</option><option>1.25</option></select>
+<button id="a">Loop A</button><button id="b">Loop B</button><button id="lp">Loop: off</button>
+<input id="vol" type="range" min="0" max="1" step=".05" value="1" aria-label="Volume" style="width:80px"></footer>
+<audio id="au" preload="auto"></audio>
+<script src="src/app.js"></script></html>
